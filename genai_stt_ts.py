@@ -13,10 +13,11 @@ model="gemini-3-flash-preview"
 r = sr.Recognizer()
 r.pause_threshold = 1.5
 
+
 #microphone input here to continue
 def stt():
     with sr.Microphone() as source:
-        r.adjust_for_ambient_noise(source, duration=0.5)
+        r.adjust_for_ambient_noise(source, duration=1.0)
         print("lising...")
 
         #audio = r.listen(source)
