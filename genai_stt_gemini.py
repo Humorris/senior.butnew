@@ -4,7 +4,7 @@ from google import genai
 from google.genai import types
 import speech_recognition as sr
 
-MODEL = "gemini-3.1-flash-live-preview"
+MODEL = "gemini-live-2.5-flash-preview"
 
 
 def record_audio(timeout: float = 5.0, phrase_time_limit: float = 15.0) -> bytes:
