@@ -4,7 +4,7 @@ from google import genai
 from google.genai import types
 import speech_recognition as sr
 
-MODEL = "gemini-3.1-flash-live-preview"
+MODEL = "gemini-3-flash-preview"
 
 
 def record_audio(timeout: float = 5.0, phrase_time_limit: float = 15.0) -> bytes:
@@ -36,6 +36,9 @@ async def transcribe_with_gemini(audio_data: bytes) -> str:
             if getattr(msg, "text", None) is not None:
                 print(msg.text, end="", flush=True)
                 transcript += msg.text
+            elif getattr(msg, "inline_data", None) is not None:
+                # Ignore non-text inline_data when using TEXT-only responses.
+                continue
             if getattr(msg, "turn_complete", False):
                 break
 
